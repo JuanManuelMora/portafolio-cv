@@ -17,7 +17,13 @@
       background-color: #1a73e8;
       color: #fff;
       padding: 20px;
+      position: relative;
       text-align: center;
+    }
+    .lang-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
     }
     .container {
       max-width: 900px;
@@ -40,38 +46,49 @@
     a:hover {
       text-decoration: underline;
     }
+    blockquote {
+      font-style: italic;
+      color: #555;
+      margin: 20px;
+      border-left: 4px solid #ccc;
+      padding-left: 15px;
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>Juan Manuel Morales García</h1>
-    <p>Ingeniero de Software en formación | Power Platform | Ciberseguridad</p>
+    <div class="lang-toggle">
+      <button onclick="toggleLanguage()">🌐 EN</button>
+    </div>
+    <h1 id="name">Juan Manuel Morales García</h1>
+    <p id="headline">Ingeniero de Software graduado | Power Platform | Ciberseguridad</p>
   </header>
   <div class="container">
     <section>
-      <h2>Contacto</h2>
-      <p>Correo: <a href="mailto:juanmanuelmorales668@gmail.com">juanmanuelmorales668@gmail.com</a></p>
-      <p>Teléfono: +57 300 231 2763</p>
+      <h2 id="contact-title">Contacto</h2>
+      <p><span id="email-label">Correo:</span> <a href="mailto:juanmanuelmorales668@gmail.com">juanmanuelmorales668@gmail.com</a></p>
+      <p><span id="phone-label">Teléfono:</span> +57 300 231 2763</p>
       <p>LinkedIn: <a href="https://www.linkedin.com/in/juan-manuel-morales-03a456263" target="_blank">linkedin.com/in/juan-manuel-morales</a></p>
       <p>GitHub: <a href="https://github.com/JuanManuelMora" target="_blank">github.com/JuanManuelMora</a></p>
     </section>
 
     <section>
-      <h2>Perfil Profesional</h2>
-      <p>Ingeniero de Software en formación con experiencia en automatización de procesos mediante Power Platform, desarrollo backend y herramientas de ciberseguridad. Me destaco por mi pensamiento analítico, proactividad y capacidad para trabajar en equipo.</p>
+      <h2 id="profile-title">Perfil Profesional</h2>
+      <p id="profile-1">Ingeniero de Software graduado con experiencia en automatización de procesos mediante Power Platform, desarrollo backend y herramientas de ciberseguridad. Me destaco por mi pensamiento analítico, proactividad y capacidad para trabajar en equipo.</p>
+      <p id="profile-2">Experiencia aplicando buenas prácticas en entornos reales, orientado a resultados y con capacidad para abordar desafíos técnicos complejos.</p>
     </section>
 
     <section>
-      <h2>Formación Académica</h2>
-      <ul>
+      <h2 id="education-title">Formación Académica</h2>
+      <ul id="education-list">
         <li>Ingeniería de Software – Tecnológico de Antioquia (2020 – 2025)</li>
         <li>Bachiller – Colegio Panamericano Colombo Sueco (2019)</li>
       </ul>
     </section>
 
     <section>
-      <h2>Certificaciones</h2>
-      <ul>
+      <h2 id="certifications-title">Certificaciones</h2>
+      <ul id="certifications-list">
         <li>Prácticas en Bancolombia – 2025</li>
         <li>Python – Coursera</li>
         <li>Diseño Web Responsivo – freeCodeCamp</li>
@@ -83,8 +100,8 @@
     </section>
 
     <section>
-      <h2>Habilidades Técnicas</h2>
-      <ul>
+      <h2 id="skills-title">Habilidades Técnicas</h2>
+      <ul id="skills-list">
         <li>Lenguajes: Java, Python, JavaScript, HTML, Angular, Django, Godot</li>
         <li>Plataformas: Power Apps, Power Automate, Power BI, SharePoint, OneDrive</li>
         <li>Base de datos: PostgreSQL, SQL</li>
@@ -95,19 +112,20 @@
     </section>
 
     <section>
-      <h2>Experiencia</h2>
-      <p><strong>Practicante Ingeniería de Software – Bancolombia (Ene 2024 – Ene 2025)</strong></p>
-      <ul>
+      <h2 id="experience-title">Experiencia</h2>
+      <p><strong id="experience-role">Practicante Ingeniería de Software – Bancolombia (Ene 2024 – Ene 2025)</strong></p>
+      <ul id="experience-list">
         <li>Automatización de procesos con Power Platform</li>
         <li>Mejoras al core de auditoría</li>
         <li>Documentación técnica y funcional</li>
         <li>Capacitaciones en SQL y buenas prácticas</li>
       </ul>
+      <blockquote id="quote">“Juan Manuel demostró una gran capacidad de análisis y compromiso con la mejora continua.” – Supervisor en Bancolombia</blockquote>
     </section>
 
     <section>
-      <h2>Proyectos Personales</h2>
-      <ul>
+      <h2 id="projects-title">Proyectos Personales</h2>
+      <ul id="projects-list">
         <li>Sistema de gestión de tareas – Django + PostgreSQL</li>
         <li>Buscador Excel tipo Google – VBA</li>
         <li>Automatización de correos – Excel + Outlook</li>
@@ -115,6 +133,37 @@
         <li>Más en: <a href="https://github.com/JuanManuelMora" target="_blank">GitHub personal</a></li>
       </ul>
     </section>
+
+    <section>
+      <h2 id="download-title">Descargar CV</h2>
+      <p><a href="Hoja de vida.pdf" download id="download-link">Descarga mi hoja de vida en PDF</a></p>
+    </section>
   </div>
+
+  <script>
+    let isSpanish = true;
+    function toggleLanguage() {
+      isSpanish = !isSpanish;
+      document.querySelector('.lang-toggle button').textContent = isSpanish ? '🌐 EN' : '🌐 ES';
+      document.getElementById('headline').textContent = isSpanish ? 'Ingeniero de Software graduado | Power Platform | Ciberseguridad' : 'Software Engineer | Power Platform | Cybersecurity';
+      document.getElementById('contact-title').textContent = isSpanish ? 'Contacto' : 'Contact';
+      document.getElementById('email-label').textContent = isSpanish ? 'Correo:' : 'Email:';
+      document.getElementById('phone-label').textContent = isSpanish ? 'Teléfono:' : 'Phone:';
+      document.getElementById('profile-title').textContent = isSpanish ? 'Perfil Profesional' : 'Professional Profile';
+      document.getElementById('profile-1').textContent = isSpanish ? 'Ingeniero de Software graduado con experiencia en automatización de procesos mediante Power Platform, desarrollo backend y herramientas de ciberseguridad. Me destaco por mi pensamiento analítico, proactividad y capacidad para trabajar en equipo.' : 'Software Engineer with experience in process automation using Power Platform, backend development, and cybersecurity tools. Strong analytical thinking, proactive, and team-oriented.';
+      document.getElementById('profile-2').textContent = isSpanish ? 'Experiencia aplicando buenas prácticas en entornos reales, orientado a resultados y con capacidad para abordar desafíos técnicos complejos.' : 'Experience applying best practices in real environments, results-driven, and able to tackle complex technical challenges.';
+      document.getElementById('education-title').textContent = isSpanish ? 'Formación Académica' : 'Education';
+      document.getElementById('education-list').innerHTML = isSpanish ? '<li>Ingeniería de Software – Tecnológico de Antioquia (2020 – 2025)</li><li>Bachiller – Colegio Panamericano Colombo Sueco (2019)</li>' : '<li>Software Engineering – Tecnológico de Antioquia (2020 – 2025)</li><li>High School – Panamericano Colombo Sueco School (2019)</li>';
+      document.getElementById('certifications-title').textContent = isSpanish ? 'Certificaciones' : 'Certifications';
+      document.getElementById('skills-title').textContent = isSpanish ? 'Habilidades Técnicas' : 'Technical Skills';
+      document.getElementById('experience-title').textContent = isSpanish ? 'Experiencia' : 'Experience';
+      document.getElementById('experience-role').textContent = isSpanish ? 'Practicante Ingeniería de Software – Bancolombia (Ene 2024 – Ene 2025)' : 'Software Engineering Intern – Bancolombia (Jan 2024 – Jan 2025)';
+      document.getElementById('quote').textContent = isSpanish ? '“Juan Manuel demostró una gran capacidad de análisis y compromiso con la mejora continua.” – Supervisor en Bancolombia' : '“Juan Manuel showed strong analytical skills and a deep commitment to continuous improvement.” – Supervisor at Bancolombia';
+      document.getElementById('projects-title').textContent = isSpanish ? 'Proyectos Personales' : 'Personal Projects';
+      document.getElementById('projects-list').innerHTML = isSpanish ? '<li>Sistema de gestión de tareas – Django + PostgreSQL</li><li>Buscador Excel tipo Google – VBA</li><li>Automatización de correos – Excel + Outlook</li><li>Control FRP en Android – herramientas forenses</li><li>Más en: <a href="https://github.com/JuanManuelMora" target="_blank">GitHub personal</a></li>' : '<li>Task management system – Django + PostgreSQL</li><li>Google-style Excel search – VBA</li><li>Email automation – Excel + Outlook</li><li>Android FRP control – forensic tools</li><li>More at: <a href="https://github.com/JuanManuelMora" target="_blank">My GitHub</a></li>';
+      document.getElementById('download-title').textContent = isSpanish ? 'Descargar CV' : 'Download Resume';
+      document.getElementById('download-link').textContent = isSpanish ? 'Descarga mi hoja de vida en PDF' : 'Download my resume (PDF)';
+    }
+  </script>
 </body>
 </html>
